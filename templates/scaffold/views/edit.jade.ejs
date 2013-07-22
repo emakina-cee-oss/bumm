@@ -7,7 +7,7 @@ block content
       legend Edit <%=model.singularCapitalized%>
 
 <% for(var i in properties) { -%>
-      .control-group
+      .control-group#group-<%= properties[i].name %>
         mixin label("<%= properties[i].name %>", "<%= properties[i].nameCapitalized %>")        
         .controls
 <%    if(properties[i].type === 'String') { -%>
@@ -29,7 +29,7 @@ block content
 <%    } else { -%>
           | <%= properties[i].type %>
 <%    } -%>
-          mixin errorMessage('<%=model.singular%>', '<%=properties[i].name%>')
+          mixin errorMessage(<%=model.singular%>, '<%=properties[i].name%>', 'group-<%= properties[i].name %>')
 <% } -%>
 
     .form-actions
