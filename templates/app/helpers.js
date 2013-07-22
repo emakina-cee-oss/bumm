@@ -10,7 +10,8 @@ var getMessage = function(error) {
 module.exports = function(app) {
     app.locals({
         errorFor : function(model, property) {
-            var modelToValidate = this[model];
+            // updated passing model reference directly since below lookup failed
+            var modelToValidate = model; //this[model];
 
             if (modelToValidate && modelToValidate.errors) {
                 if (property && modelToValidate.errors[property]) {
