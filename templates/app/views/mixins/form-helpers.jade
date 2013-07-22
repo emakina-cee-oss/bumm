@@ -23,5 +23,9 @@ mixin datetime(field, value)
   input.span2(type="datetime", id=field, name=field, value=value)
 
     
-mixin errorMessage(model, field)
+mixin errorMessage(model, field, group)
   !{errorFor(model, field)}
+  //- some extra marking using bootstrap error class on optional control group element
+  if( group && model.errors && model.errors[field] )
+    script
+      $('##{group}').addClass('error');
